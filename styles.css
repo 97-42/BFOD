@@ -54,6 +54,20 @@ main {
     border-radius: 10px;
 }
 
+#visitor-counter {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}
+
+#visitor-counter h2 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #333; /* Adjust color to fit your design */
+}
+
 footer {
     text-align: center;
     background-color: #333;
@@ -78,16 +92,7 @@ footer {
     background-color: #0056b3;
 }
 
-#visitor-counter {
+.download-link {
     text-align: center;
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-}
-
-#visitor-counter h2 {
-    margin-top: 0;
-    font-size: 20px;
-    color: #333; /* Adjust color to fit your design */
+    margin: 20px 0;
 }
