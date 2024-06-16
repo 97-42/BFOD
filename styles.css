@@ -9,6 +9,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    box-sizing: border-box; /* Include padding and border in total width */
 }
 
 header {
@@ -83,4 +84,10 @@ footer {
     padding: 10px;
     border: 2px solid #ccc;
     border-radius: 10px;
+}
+
+#visitor-counter h2 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #333; /* Adjust color to fit your design */
 }
