@@ -23,36 +23,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const currentDate = new Date();
     const timeDiff = currentDate - startDate;
-    let daysCounted = Math.floor(timeDiff / (1000 * 60 * 60 * 24)) + 1; // +1 to start from 1
-    dayCountElement.textContent = daysCounted;
+    const daysCounted = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    dayCountElement.textContent = daysCounted + 1; // +1 to start from 1
 
-    // Example image
-    const imageUrl = 'resources/image1.jpeg';
+    // Example images
+    const images = [
+        'resources/image1.jpeg',
+        'https://via.placeholder.com/200',
+        'https://via.placeholder.com/200'
+    ];
 
     const imagesContainer = document.getElementById('images');
-    const img = document.createElement('img');
-    img.src = imageUrl;
-    img.alt = "Image of Brady's broken Ford";
-    img.classList.add('gallery-image'); // Add a class for styling
-    imagesContainer.appendChild(img);
+
+    images.forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        imagesContainer.appendChild(img);
+    });
 
     // Check for reset parameter in URL
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has('resetTimer')) {
         resetTimer();
     }
-
-    // Function to manually set the counter value
-    function setCounterValue(value) {
-        if (!isNaN(value) && value >= 0) {
-            daysCounted = value;
-            dayCountElement.textContent = daysCounted;
-        } else {
-            console.error('Invalid input for counter value');
-        }
-    }
-
-    // Example of how to use setCounterValue function
-    // setCounterValue(10); // Set the counter to 10
-    // setCounterValue(20); // Set the counter to 20
 });
