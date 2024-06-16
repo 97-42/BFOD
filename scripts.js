@@ -26,20 +26,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const daysCounted = Math.floor(timeDiff / (1000 * 60 * 60 * 24)) + 1; // +1 to start from 1
     dayCountElement.textContent = daysCounted;
 
-    // Example images
-    const images = [
-        'https://via.placeholder.com/200',
-        'https://via.placeholder.com/200',
-        'https://via.placeholder.com/200'
-    ];
+    // Example image
+    const imageUrl = 'resources/image1.jpeg';
 
     const imagesContainer = document.getElementById('images');
-
-    images.forEach(src => {
-        const img = document.createElement('img');
-        img.src = src;
-        imagesContainer.appendChild(img);
-    });
+    const img = document.createElement('img');
+    img.src = imageUrl;
+    img.alt = "Image of Brady's broken Ford";
+    img.classList.add('gallery-image'); // Add a class for styling
+    imagesContainer.appendChild(img);
 
     // Check for reset parameter in URL
     const urlParams = new URLSearchParams(window.location.search);
