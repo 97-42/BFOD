@@ -1,11 +1,3 @@
-function resetTimer() {
-    fetch('start_date.php?reset=1')
-        .then(() => location.reload());
-}
-
-// Expose resetTimer function for manual reset via console
-window.resetTimer = resetTimer;
-
 document.addEventListener('DOMContentLoaded', function () {
     const dayCountElement = document.getElementById('day-count');
 
@@ -16,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const currentDate = new Date();
             const timeDiff = currentDate - startDate;
             const daysCounted = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-            dayCountElement.textContent = daysCounted + 1; // +1 to start from 1
+            dayCountElement.textContent = daysCounted; // No +1 to start from 0
         });
 
     // Example images
@@ -34,9 +26,10 @@ document.addEventListener('DOMContentLoaded', function () {
         imagesContainer.appendChild(img);
     });
 
-    // Check for reset parameter in URL
+    // Check for reset parameter in URL with a special command
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('resetTimer')) {
-        resetTimer();
+    if (urlParams.has('specialResetCommand')) {
+        fetch('start_date.php?reset=1')
+            .then(() => location.reload());
     }
 });
