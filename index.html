@@ -1,43 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brady Ford of Doom</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Days since Brady's Ford broke</h1>
-        </header>
-        <main>
-            <div class="timer">
-                <h2>Days Counted: <span id="day-count">0</span></h2>
-            </div>
-            <div class="image-gallery">
-                <h2>Images of the horrible automobile</h2>
-                <div id="images">
-                    <!-- Images will be added here -->
-                </div>
-            </div>
-            <div id="visitor-counter">
-                <h2>Visitor Counter</h2>
-                <a href='http://www.freevisitorcounters.com'>at www.freevisitorcounters.com</a>
-                <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=f2cd0d8a42473f9c69d0ae59e9b0185def658455'></script>
-                <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1193159/t/5"></script>
-            </div>
-            <div class="download-link">
-                <a href="resources/Au-falcon.mp3" download>Download Au-falcon.mp3</a>
-            </div>
-        </main>
-        <footer>
-            <div class="contact-bar">
-                <a href="mailto:your-email@example.com" id="contact-email">Contact us if you have information of his car breaking down</a>
-            </div>
-            <p>&copy; 2024 Your Website</p>
-        </footer>
-    </div>
-    <script src="scripts.js"></script>
-</body>
-</html>
+document.addEventListener('DOMContentLoaded', function () {
+    const dayCountElement = document.getElementById('day-count');
+
+    fetch('start_date.php')
+        .then(response => response.text())
+        .then(startDateStr => {
+            const startDate = new Date(startDateStr);
+            const currentDate = new Date();
+            const timeDiff = currentDate - startDate;
+            const daysCounted = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            dayCountElement.textContent = daysCounted; // No +1 to start from 0
+
+            // If it's a new day, update the start date to the current date
+            if (timeDiff >= (1000 * 60 * 60 * 24)) {
+                fetch(`start_date.php?reset=yourSpecialCommand`)
+                    .then(() => location.reload());
+            }
+        });
+
+    // Example images
+    const images = [
+        'resources/image1.jpeg',
+        'https://via.placeholder.com/200',
+        'https://via.placeholder.com/200'
+    ];
+
+    const imagesContainer = document.getElementById('images');
+
+    images.forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        imagesContainer.appendChild(img);
+    });
+
+    // Check for reset parameter in URL with a special command
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('specialResetCommand')) {
+        const command = urlParams.get('specialResetCommand');
+        fetch(`start_date.php?reset=${command}`)
+            .then(() => location.reload());
+    }
+});
