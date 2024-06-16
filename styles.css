@@ -9,7 +9,6 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    box-sizing: border-box; /* Include padding and border in total width */
 }
 
 header {
@@ -28,13 +27,6 @@ main {
     background-color: #ffcc00;
     padding: 20px;
     margin-bottom: 20px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-}
-
-.timer h2 {
-    margin: 0;
-    font-size: 24px;
 }
 
 .image-gallery {
@@ -52,20 +44,6 @@ main {
     max-width: 200px;
     border: 2px solid #ccc;
     border-radius: 10px;
-}
-
-#visitor-counter {
-    text-align: center;
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-}
-
-#visitor-counter h2 {
-    margin-top: 0;
-    font-size: 20px;
-    color: #333; /* Adjust color to fit your design */
 }
 
 footer {
@@ -92,7 +70,26 @@ footer {
     background-color: #0056b3;
 }
 
+#visitor-counter {
+    text-align: center;
+    margin-top: 20px;
+}
+
 .download-link {
     text-align: center;
-    margin: 20px 0;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
 }
