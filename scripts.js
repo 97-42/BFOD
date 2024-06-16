@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const dayCountElement = document.getElementById('day-count');
     const startDateKey = 'startDate';
-    const storedStartDate = localStorage.getItem(startDateKey);
+    let storedStartDate = localStorage.getItem(startDateKey);
     let startDate;
 
     if (storedStartDate) {
@@ -40,7 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function resetTimer() {
     const startDateKey = 'startDate';
-    localStorage.removeItem(startDateKey);
+    const newStartDate = new Date();
+    localStorage.setItem(startDateKey, newStartDate.toISOString());
     location.reload();
 }
 
