@@ -1,3 +1,13 @@
+function resetTimer() {
+    const startDateKey = 'startDate';
+    const newStartDate = new Date();
+    localStorage.setItem(startDateKey, newStartDate.toISOString());
+    location.reload();
+}
+
+// Expose resetTimer function for manual reset via console
+window.resetTimer = resetTimer;
+
 document.addEventListener('DOMContentLoaded', function () {
     const dayCountElement = document.getElementById('day-count');
     const startDateKey = 'startDate';
@@ -37,13 +47,3 @@ document.addEventListener('DOMContentLoaded', function () {
         resetTimer();
     }
 });
-
-function resetTimer() {
-    const startDateKey = 'startDate';
-    const newStartDate = new Date();
-    localStorage.setItem(startDateKey, newStartDate.toISOString());
-    location.reload();
-}
-
-// Expose resetTimer function for manual reset via console
-window.resetTimer = resetTimer;
