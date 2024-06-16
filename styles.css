@@ -27,6 +27,13 @@ main {
     background-color: #ffcc00;
     padding: 20px;
     margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}
+
+.timer h2 {
+    margin: 0;
+    font-size: 24px;
 }
 
 .image-gallery {
@@ -66,6 +73,14 @@ footer {
     border-radius: 5px;
 }
 
-contact-bar a:hover {
+.contact-bar a:hover {
     background-color: #0056b3;
+}
+
+#visitor-counter {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
 }
