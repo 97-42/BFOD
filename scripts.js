@@ -1,8 +1,6 @@
 function resetTimer() {
-    const startDateKey = 'startDate';
-    const newStartDate = new Date();
-    localStorage.setItem(startDateKey, newStartDate.toISOString());
-    location.reload();
+    fetch('start_date.php?reset=1')
+        .then(() => location.reload());
 }
 
 // Expose resetTimer function for manual reset via console
@@ -10,21 +8,16 @@ window.resetTimer = resetTimer;
 
 document.addEventListener('DOMContentLoaded', function () {
     const dayCountElement = document.getElementById('day-count');
-    const startDateKey = 'startDate';
-    let storedStartDate = localStorage.getItem(startDateKey);
-    let startDate;
 
-    if (storedStartDate) {
-        startDate = new Date(storedStartDate);
-    } else {
-        startDate = new Date();
-        localStorage.setItem(startDateKey, startDate.toISOString());
-    }
-
-    const currentDate = new Date();
-    const timeDiff = currentDate - startDate;
-    const daysCounted = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-    dayCountElement.textContent = daysCounted + 1; // +1 to start from 1
+    fetch('start_date.php')
+        .then(response => response.text())
+        .then(startDateStr => {
+            const startDate = new Date(startDateStr);
+            const currentDate = new Date();
+            const timeDiff = currentDate - startDate;
+            const daysCounted = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            dayCountElement.textContent = daysCounted + 1; // +1 to start from 1
+        });
 
     // Example images
     const images = [
