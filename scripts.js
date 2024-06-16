@@ -29,7 +29,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Check for reset parameter in URL with a special command
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has('specialResetCommand')) {
-        fetch('start_date.php?reset=1')
+        const command = urlParams.get('specialResetCommand');
+        fetch(`start_date.php?reset=${command}`)
             .then(() => location.reload());
     }
 });
