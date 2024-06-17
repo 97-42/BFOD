@@ -58,15 +58,22 @@ footer {
     margin-top: 10px;
 }
 
-.contact-bar a {
+.icon-button {
     color: white;
     text-decoration: none;
-    padding: 5px 10px;
+    padding: 10px 20px;
     background-color: #007bff;
     border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.contact-bar a:hover {
+.icon-button i {
+    margin-right: 5px;
+}
+
+.icon-button:hover {
     background-color: #0056b3;
 }
 
